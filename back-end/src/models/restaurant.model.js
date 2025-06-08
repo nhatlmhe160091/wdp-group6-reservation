@@ -1,7 +1,34 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
+const activeTimeSchema = new mongoose.Schema({
+    open: {
+        type: String,
+        required: [true, "Thời gian mở cửa là bắt buộc."]
+    },
+    close: {
+        type: String,
+        required: [true, "Thời gian đóng cửa là bắt buộc."]
+    }
+});
 
+const locationSchema = new mongoose.Schema({
+    type: {
+        type: String,
+        enum: ['Point'],
+        default: 'Point',
+        required: true,
+    },
+    coordinates: {
+        type: [Number], // Mảng chứa [latitude, longitude]
+        required: true,
+        validate: {
+            validator: (v) => v.length === 2, // Đảm bảo có đúng 2 giá trị
+            message: 'Tọa độ cần phải có đúng 2 giá trị lần lượt là: [latitude, longitude]',
+        },
+
+    },
+});
 
 const restaurantSchema = new Schema({
     name: {
