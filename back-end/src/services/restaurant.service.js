@@ -2,14 +2,14 @@ const { Restaurant, Voucher, Dish } = require('../models/index');
 
 class RestaurantService {
     /**
-    * author: XXX
+    * author: thaikv
     */
     getAllRestaurants = async () => {
         return await Restaurant.find();
     }
 
     /**
-    * author: XXX
+    * author: thaikv
     */
     getPaginatedRestaurants = async (page = 1, limit = 10, name) => {
         const filter = {};
@@ -36,7 +36,7 @@ class RestaurantService {
     }
 
     /**
-    * author: XXX
+    * author: thaikv
     */
     getRestaurantsByVoucherId = async (voucherId) => {
         const voucher = await Voucher.findById(voucherId)
@@ -54,7 +54,7 @@ class RestaurantService {
     };
 
     /**
-    * author: XXX
+    * author: thaikv
     */
     getRestaurantsByDishId = async (dishId) => {
         const dish = await Dish.findById(dishId)
@@ -71,7 +71,62 @@ class RestaurantService {
         }
     };
 
-   
+    /**
+    * author: thaikv
+    */
+    getRestaurant = async (restaurantId) => {
+        const restaurant = await Restaurant.findById(restaurantId)
+        const totalRecords = await Restaurant.countDocuments({ _id: restaurantId });
+        return {
+            data: restaurant,
+            meta: {
+                total: totalRecords
+            }
+        }
+    };
+
+    /**
+    * author: Thaikx
+    */
+    getAllRestaurantsNgocNB = async () => {
+        return await Restaurant.find();
+    }
+
+    /**
+    * author: Thaikx
+    */
+    countRestaurants = async () => {
+        return await Restaurant.countDocuments();
+    }
+
+    /**
+    * author: Thaikx
+    */
+    findRestaurantsInPage = async (LIMIT, startIndex) => {
+        return await Restaurant.find().sort({ _id: -1 }).limit(LIMIT).skip(startIndex);
+    }
+
+    /**
+    * author: Thaikv
+    */
+    createRestaurant = async (restaurantData) => {
+        const newRestaurant = new Restaurant(restaurantData);
+        return await newRestaurant.save();
+    }
+
+    /**
+    * author: Thaikx
+    */
+    updateRestaurant = async (id, updatedData) => {
+        return await Restaurant.findByIdAndUpdate(id, updatedData, { new: true });
+    }
+
+    /**
+    * author: Thaikv
+    */
+    deleteRestaurant = async (id) => {
+        return await Restaurant.findByIdAndDelete(id); // Xóa nhà hàng theo id
+    }
 
 }
 
