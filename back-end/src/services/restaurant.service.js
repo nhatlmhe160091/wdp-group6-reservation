@@ -35,7 +35,44 @@ class RestaurantService {
         }
     }
 
-    
+    /**
+    * author: XXX
+    */
+    getRestaurantsByVoucherId = async (voucherId) => {
+        const voucher = await Voucher.findById(voucherId)
+            .populate({
+                path: 'restaurants',
+            })
+            .exec();
+        if (!voucher) {
+            throw new Error('Voucher not found');
+        }
+
+        return {
+            data: voucher.restaurants,
+        }
+    };
+
+    /**
+    * author: XXX
+    */
+    getRestaurantsByDishId = async (dishId) => {
+        const dish = await Dish.findById(dishId)
+            .populate({
+                path: 'restaurants',
+            })
+            .exec();
+        if (!dish) {
+            throw new Error('Dish not found');
+        }
+
+        return {
+            data: dish.restaurants,
+        }
+    };
+
+   
+
 }
 
 module.exports = new RestaurantService;
