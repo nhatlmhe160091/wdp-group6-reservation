@@ -53,9 +53,9 @@ export default function EditProfileDialog({ open, setOpen }) {
     const [password, setPassword] = useState(""); 
 
     // Snackbar state
-    const [openNotification, setOpenNotification] = useState(false); 
-    const [messageNotification, setMessageNotification] = useState('');
-    const [severityNotification, setSeverityNotification] = useState('info'); 
+    const [openNotification, setOpenNotification] = useState(false);  
+    const [messageNotification, setMessageNotification] = useState(''); 
+    const [severityNotification, setSeverityNotification] = useState('info');  
 
     const handleClose = () => {
         setOpen(false); 
@@ -76,15 +76,15 @@ export default function EditProfileDialog({ open, setOpen }) {
             setMessageNotification("Bạn chưa nhập lại mật khẩu!");
             setSeverityNotification('error');
             setOpenNotification(true);
-            return; 
+            return;  
         }
         if (firstName.length === 0 || firstName.length === 0 || phoneNumber.length === 0) {
             setMessageNotification("Các trường thông tin không thể để trống!")
             setSeverityNotification('error'); 
-            setOpenNotification(true);
-            return; 
+            setOpenNotification(true); 
+            return;  
         }
-        setLoading(true);  
+        setLoading(true);   
         try {
             await doSignInWithEmailAndPassword(currentUser?.email, password);
             const dob = `${month}-${day}-${year}`;

@@ -21,7 +21,7 @@ const statusMapping = {
 const getStatusInVietnamese = (status) => {
   return statusMapping[status] || status;
 };
-const EditBookingModal = ({ open, onClose, bookingData,fetchBookings }) => {
+const EditBookingModal = ({ open, onClose, bookingData,fetchBookings }) => { 
   const [selectedDate, setSelectedDate] = useState('');
   const [selectedTime, setSelectedTime] = useState('');
   const [adultsCount, setAdultsCount] = useState(2);
@@ -32,7 +32,7 @@ const EditBookingModal = ({ open, onClose, bookingData,fetchBookings }) => {
   useEffect(() => {
     if (bookingData) {
       const bookingDate = new Date(bookingData.bookingTime);
-      setSelectedDate(bookingDate.toISOString().split('T')[0]);
+      setSelectedDate(bookingDate.toISOString().split('T')[0]); 
       setSelectedTime(bookingDate.toTimeString().split(' ')[0].substring(0, 5));
       setAdultsCount(bookingData.adultsCount);
       setChildrenCount(bookingData.childrenCount);
@@ -43,7 +43,7 @@ const EditBookingModal = ({ open, onClose, bookingData,fetchBookings }) => {
 
   const handleSave = async () => {
     try {
-      const updatedBooking = {
+      const updatedBooking = { 
         bookingTime:new Date(`${selectedDate}T${selectedTime}:00`) ,
         adultsCount: adultsCount,
         childrenCount,
@@ -56,7 +56,7 @@ const EditBookingModal = ({ open, onClose, bookingData,fetchBookings }) => {
       fetchBookings();
       onClose();
     } catch (error) {
-      console.error('Error updating booking:', error?.message);
+      console.error('Error updating booking:', error?.message); 
       alert(error?.message);
     }
   };
@@ -64,14 +64,14 @@ const EditBookingModal = ({ open, onClose, bookingData,fetchBookings }) => {
   return (
     <Dialog open={open} onClose={onClose} maxWidth="xs" fullWidth>
       <Box p={3}>
-        <DialogTitle>Chỉnh sửa thông tin đặt bàn</DialogTitle>
+        <DialogTitle>Chỉnh sửa thông tin đặt bàn</DialogTitle> 
 
         {/* <Box textAlign="center" mt={2}>
           <Typography variant="h6">{bookingData?.customer || 'Customer Name'}</Typography>
           <Typography color="textSecondary">{bookingData?.guest?.phone || 'Customer Phone'}</Typography>
         </Box> */}
 
-        <Grid container spacing={2} sx={{ mt: 2 }}>
+        <Grid container spacing={2} sx={{ mt: 2 }}> 
           <Grid item xs={6}>
             <TextField
               type="Ngày đến"
@@ -80,7 +80,7 @@ const EditBookingModal = ({ open, onClose, bookingData,fetchBookings }) => {
               onChange={(e) => setSelectedDate(e.target.value)}
               fullWidth
             />
-          </Grid>
+          </Grid> 
           <Grid item xs={6}>
             <TextField
               type="Thời gian đến"
@@ -89,7 +89,7 @@ const EditBookingModal = ({ open, onClose, bookingData,fetchBookings }) => {
               onChange={(e) => setSelectedTime(e.target.value)}
               fullWidth
             />
-          </Grid>
+          </Grid> 
           <Grid item xs={6}>
             <TextField
               label="Người lớn"
@@ -98,7 +98,7 @@ const EditBookingModal = ({ open, onClose, bookingData,fetchBookings }) => {
               onChange={(e) => setAdultsCount(e.target.value)}
               fullWidth
             />
-          </Grid>
+          </Grid> 
           <Grid item xs={6}>
             <TextField
               label="Trẻ em"
@@ -107,7 +107,7 @@ const EditBookingModal = ({ open, onClose, bookingData,fetchBookings }) => {
               onChange={(e) => setChildrenCount(e.target.value)}
               fullWidth
             />
-          </Grid>
+          </Grid> 
           <Grid item xs={12}>
             <TextField
               label="Ghi chú thêm"
@@ -117,7 +117,7 @@ const EditBookingModal = ({ open, onClose, bookingData,fetchBookings }) => {
               rows={3}
               fullWidth
             />
-          </Grid>
+          </Grid> 
           <Grid item xs={12}>
             <TextField
               select
@@ -125,13 +125,13 @@ const EditBookingModal = ({ open, onClose, bookingData,fetchBookings }) => {
               value={status}
               onChange={(e) => setStatus(e.target.value)}
               fullWidth
-            >
+            > 
               <MenuItem value="PENDING">{getStatusInVietnamese('PENDING')}</MenuItem>
               <MenuItem value="CONFIRMED">{getStatusInVietnamese('CONFIRMED')}</MenuItem>
               <MenuItem value="TABLE_ASSIGNED">{getStatusInVietnamese('TABLE_ASSIGNED')}</MenuItem>
               <MenuItem value="CANCELLED">{getStatusInVietnamese('CANCELLED')}</MenuItem>
               <MenuItem value="COMPLETED">{getStatusInVietnamese('COMPLETED')}</MenuItem>
-            </TextField>
+            </TextField> 
           </Grid>
         </Grid>
 
