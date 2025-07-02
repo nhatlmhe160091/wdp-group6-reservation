@@ -9,7 +9,7 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 
-const BootstrapDialog = styled(Dialog)(({ theme }) => ({
+const BootstrapDialog = styled(Dialog)(({ theme }) => ({ 
     '& .MuiDialogContent-root': {
         padding: theme.spacing(2),
     },
@@ -27,7 +27,7 @@ export default function ThankForBooking({ open, setOpen }) {
     return (
         <React.Fragment>
             <BootstrapDialog
-                onClose={handleClose}
+                onClose={handleClose} 
                 aria-labelledby="customized-dialog-title"
                 open={open}
             >

@@ -3,14 +3,14 @@ import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
+import DialogTitle from '@mui/material/DialogTitle'; 
 import Grid from '@mui/material/Grid2';
 import Box from '@mui/material/Box';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
+import Select from '@mui/material/Select'; 
 import Person4Icon from '@mui/icons-material/Person4';
-import ChildCareIcon from '@mui/icons-material/ChildCare';
+import ChildCareIcon from '@mui/icons-material/ChildCare'; 
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import { Button } from '@mui/material';
 import dayjs from 'dayjs';
@@ -194,7 +194,7 @@ console.log("restaurant", restaurant);
                                                         }}
                                                     />
                                                 </Box>
-                                            </Grid>
+                                            </Grid> 
                                             <Grid size={6} >
                                                 <Box sx={{ width: '100%' }}>
                                                     <Box sx={{ display: 'flex' }}>
@@ -213,7 +213,7 @@ console.log("restaurant", restaurant);
                                                         required
                                                     />
                                                 </Box>
-                                            </Grid>
+                                            </Grid> 
                                             <Grid size={12} sx={{ mt: 2 }}>
                                             </Grid>
                                             <Grid size={7}>
@@ -245,19 +245,19 @@ console.log("restaurant", restaurant);
                                                         </Tooltip> */}
                                                     </Paper>
                                                 </Box>
-                                            </Grid>
+                                            </Grid> 
                                             {/* <Grid size={5}>
                                                 <Box sx={{ width: '100%' }}>
-                                                    <Box sx={{ display: 'flex' }}>
+                                                    <Box sx={{ display: 'flex' }}> 
                                                         <Typography variant="body2" gutterBottom sx={{ fontWeight: 'bold', color: 'black' }}>
-                                                            Nhập mã OTP
+                                                            Nhập mã OTP 
                                                         </Typography>
-                                                    </Box>
+                                                    </Box> 
                                                     <TextField variant="outlined" sx={{ width: "100%" }} size="small"
                                                         value={otp}
                                                         onChange={(e) => setOtp(e.target.value)}
                                                     />
-                                                </Box>
+                                                </Box> 
                                             </Grid> */}
                                             <Grid size={12}>
                                                 <Box sx={{ width: '100%', mt: 2 }}>

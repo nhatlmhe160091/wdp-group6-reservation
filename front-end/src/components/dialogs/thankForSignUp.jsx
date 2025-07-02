@@ -10,11 +10,11 @@ import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 
 const BootstrapDialog = styled(Dialog)(({ theme }) => ({
-    '& .MuiDialogContent-root': {
+    '& .MuiDialogContent-root': { 
         padding: theme.spacing(2),
     },
     '& .MuiDialogActions-root': {
-        padding: theme.spacing(1),
+        padding: theme.spacing(1),  
     },
 }));
 
@@ -22,11 +22,11 @@ export default function ThankForSignUp({ open, setOpen }) {
 
     const handleClose = () => {
         setOpen(false);
-    };
+    }; 
 
     return (
         <React.Fragment>
-            <BootstrapDialog
+            <BootstrapDialog 
                 onClose={handleClose}
                 aria-labelledby="customized-dialog-title"
                 open={open}
