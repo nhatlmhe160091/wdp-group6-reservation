@@ -26,16 +26,16 @@ const theme = createTheme({
     },
 });
 
-function CustomerHeader() {
-    const navigate = useNavigate();
-    const { currentUser, isUserLoggedIn } = useAuth();
+function CustomerHeader() { 
+    const navigate = useNavigate(); 
+    const { currentUser, isUserLoggedIn } = useAuth(); 
     const [user, setUser] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
     const [openProfileDialog, setOpenProfileDialog] = React.useState(false);
     const [openBookingHistoryDialog, setOpenBookingHistoryDialog] = React.useState(false);
-    const [scrolled, setScrolled] = React.useState(false);
+    const [scrolled, setScrolled] = React.useState(false); 
     const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
+        setAnchorElUser(event.currentTarget); 
     };
 
 
@@ -48,19 +48,19 @@ function CustomerHeader() {
     }
 
     React.useEffect(() => {
-        if (isUserLoggedIn) {
-            setUser(currentUser);
+        if (isUserLoggedIn) { 
+            setUser(currentUser); 
         }
-    }, [currentUser, isUserLoggedIn])
+    }, [currentUser, isUserLoggedIn]) 
     React.useEffect(() => {
         const handleScroll = () => {
-            setScrolled(window.scrollY > 0);
+            setScrolled(window.scrollY > 0); 
         };
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+    }, []); 
     return (
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={theme}> 
             <AppBar
                 position="fixed"
                 sx={{

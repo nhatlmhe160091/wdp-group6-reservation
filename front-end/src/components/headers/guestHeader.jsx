@@ -24,7 +24,7 @@ const theme = createTheme({
     },
 });
 
-function GuestHeader() {
+function GuestHeader() { 
     const navigate = useNavigate();
     const [openLogin, setOpenLogin] = useState(false);
     const [openRegister, setOpenRegister] = useState(false);
@@ -39,7 +39,7 @@ function GuestHeader() {
     }, []);
 
     return (
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={theme}> 
             <AppBar
                 position="fixed"
                 sx={{
@@ -60,7 +60,7 @@ function GuestHeader() {
                                 color: scrolled ? 'inherit' : '#d02028'
                             }}
                         />
-                        <Typography
+                        <Typography 
                             variant="h6"
                             noWrap
                             component="a"
@@ -161,4 +161,4 @@ function GuestHeader() {
         </ThemeProvider>
     );
 }
-export default GuestHeader;
+export default GuestHeader; 

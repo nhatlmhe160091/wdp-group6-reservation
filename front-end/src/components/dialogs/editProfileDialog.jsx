@@ -50,15 +50,15 @@ export default function EditProfileDialog({ open, setOpen }) {
     const [year, setYear] = useState(2024);
     const [phoneNumber, setPhoneNumber] = useState(currentUser?.phoneNumber);
     const [gender, setGender] = useState(currentUser?.gender);
-    const [password, setPassword] = useState("");
+    const [password, setPassword] = useState(""); 
 
     // Snackbar state
-    const [openNotification, setOpenNotification] = useState(false);
+    const [openNotification, setOpenNotification] = useState(false); 
     const [messageNotification, setMessageNotification] = useState('');
     const [severityNotification, setSeverityNotification] = useState('info'); 
 
     const handleClose = () => {
-        setOpen(false);
+        setOpen(false); 
     };
 
     useEffect(() => {
@@ -76,15 +76,15 @@ export default function EditProfileDialog({ open, setOpen }) {
             setMessageNotification("Bạn chưa nhập lại mật khẩu!");
             setSeverityNotification('error');
             setOpenNotification(true);
-            return;
+            return; 
         }
         if (firstName.length === 0 || firstName.length === 0 || phoneNumber.length === 0) {
             setMessageNotification("Các trường thông tin không thể để trống!")
             setSeverityNotification('error'); 
             setOpenNotification(true);
-            return;
+            return; 
         }
-        setLoading(true); 
+        setLoading(true);  
         try {
             await doSignInWithEmailAndPassword(currentUser?.email, password);
             const dob = `${month}-${day}-${year}`;
@@ -97,7 +97,7 @@ export default function EditProfileDialog({ open, setOpen }) {
             setMessageNotification("Thay đổi thông tin cá nhân thành công!");
             setOpenNotification(true);
             setLoading(false); 
-            return handleClose();
+            return handleClose(); 
         } catch (error) {
             setSeverityNotification('error');
             if (error.code === 'auth/invalid-credential') {

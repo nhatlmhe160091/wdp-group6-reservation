@@ -14,7 +14,7 @@ import Link from '@mui/material/Link';
 import { useAuth } from '../../contexts/authContext';
 import ProfileDialog from '../dialogs/profileDialog';
 
-function AdminHeader() {
+function AdminHeader() { 
     const navigate = useNavigate();
     const { currentUser, isUserLoggedIn } = useAuth();
     const [user, setUser] = React.useState(null);
@@ -22,7 +22,7 @@ function AdminHeader() {
     const [openProfileDialog, setOpenProfileDialog] = React.useState(false);
 
     const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
+        setAnchorElUser(event.currentTarget); 
     };
 
     const handleCloseUserMenu = () => {
@@ -37,12 +37,12 @@ function AdminHeader() {
         if (isUserLoggedIn) {
             setUser(currentUser);
         }
-    }, [currentUser, isUserLoggedIn])
+    }, [currentUser, isUserLoggedIn]) 
    const drawerWidth = 240;
     return (
         <>
            <AppBar
-                position="fixed"
+                position="fixed" 
                 sx={{
                     width: `calc(100% - ${drawerWidth}px)`,
                     ml: `${drawerWidth}px`,
@@ -56,8 +56,8 @@ function AdminHeader() {
                         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
                     },
                 }}
-            >
-                <Container maxWidth="xl">
+            > 
+                <Container maxWidth="xl"> 
                     <Toolbar disableGutters>
                         <TableBarIcon onClick={() => navigate('/admin/dish')} sx={{ cursor: 'pointer', display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                         <Typography
@@ -118,8 +118,8 @@ function AdminHeader() {
                                 <MenuItem onClick={handleSignOut}>
                                     <Typography sx={{ textAlign: 'center' }}>Đăng xuất</Typography>
                                 </MenuItem>
-                            </Menu>
-                        </Box>
+                            </Menu> 
+                        </Box> 
                     </Toolbar>
                 </Container>
             </AppBar>
