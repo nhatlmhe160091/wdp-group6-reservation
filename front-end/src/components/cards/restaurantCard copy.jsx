@@ -13,20 +13,20 @@ import FoodBankIcon from '@mui/icons-material/FoodBank';
 import LunchDiningIcon from '@mui/icons-material/LunchDining'; 
 import defaultArt from '../../assets/default_restaurant_card.jpg'; 
 import Button from '@mui/material/Button'; 
-import { createTheme, ThemeProvider } from '@mui/material/styles'; 
-import { Box } from '@mui/material'; 
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import VoucherService from '../../services/voucherService';
-import DishService from '../../services/dishService';
-import DishDrawer from '../drawers/dishDrawer';
-import VoucherDrawer from '../drawers/voucherDrawer';
-import LoyaltyIcon from '@mui/icons-material/Loyalty';
-import Tooltip from '@mui/material/Tooltip';
-import ImageService from '../../services/imageService';
-import { useEffect } from 'react';
+import { createTheme, ThemeProvider } from '@mui/material/styles';  
+import { Box } from '@mui/material';  
+import { useState } from 'react'; 
+import { useNavigate } from 'react-router-dom'; 
+import VoucherService from '../../services/voucherService'; 
+import DishService from '../../services/dishService'; 
+import DishDrawer from '../drawers/dishDrawer'; 
+import VoucherDrawer from '../drawers/voucherDrawer'; 
+import LoyaltyIcon from '@mui/icons-material/Loyalty'; 
+import Tooltip from '@mui/material/Tooltip'; 
+import ImageService from '../../services/imageService'; 
+import { useEffect } from 'react'; 
 
-const theme = createTheme({
+const theme = createTheme({ 
     palette: {
         primary: {
             main: '#d02028',
@@ -37,14 +37,14 @@ const theme = createTheme({
     },
 });
 
-export default function RestaurantCard({ restaurant }) {
-    const navigate = useNavigate();
-    const [openDishDrawer, setOpenDishDrawer] = useState(false);
-    const [openVoucherDrawer, setOpenVoucherDrawer] = useState(false);
-    const [dishes, setDishes] = useState([]);
-    const [vouchers, setVouchers] = useState([]);
+export default function RestaurantCard({ restaurant }) { 
+    const navigate = useNavigate(); 
+    const [openDishDrawer, setOpenDishDrawer] = useState(false); 
+    const [openVoucherDrawer, setOpenVoucherDrawer] = useState(false); 
+    const [dishes, setDishes] = useState([]); 
+    const [vouchers, setVouchers] = useState([]); 
     const [images, setImages] = useState([]);
-
+ 
     useEffect(() => {
         const fetchImages = async () => {
             const res = await ImageService.getImage(restaurant?._id);
