@@ -22,7 +22,7 @@ export default function ThankForSignUp({ open, setOpen }) {
 
     const handleClose = () => {
         setOpen(false);
-    }; 
+    };  
 
     return (
         <React.Fragment>

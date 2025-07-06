@@ -1,5 +1,5 @@
-import React from 'react';
-import { Box, Typography } from '@mui/material';
+import React from 'react'; 
+import { Box, Typography } from '@mui/material'; 
 
 const InvalidVoucherMask = ({ children, status }) => {
     return (
@@ -41,4 +41,4 @@ const InvalidVoucherMask = ({ children, status }) => {
     );
 };
 
-export default InvalidVoucherMask;
+export default InvalidVoucherMask; 
