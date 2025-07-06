@@ -1,15 +1,15 @@
-import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
-import { changePageNumber } from "../../redux/slice/restaurantSlice";
+import React from 'react'; 
+import { useDispatch, useSelector } from 'react-redux'; 
+import Pagination from '@mui/material/Pagination'; 
+import Stack from '@mui/material/Stack'; 
+import { changePageNumber } from "../../redux/slice/restaurantSlice"; 
 
 const PaginationResBox = ({ numberOfPage }) => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch(); 
   const currentPage = useSelector((state) => state.restaurants.pageNumber); // Lấy trang hiện tại từ Redux store
 
   const handlePageChange = (event, value) => {
-    dispatch(changePageNumber(value));
+    dispatch(changePageNumber(value)); 
   };
 
   return (
@@ -17,7 +17,7 @@ const PaginationResBox = ({ numberOfPage }) => {
       <Pagination
         count={numberOfPage}
         page={currentPage}
-        onChange={handlePageChange}
+        onChange={handlePageChange} 
         variant="outlined"
         color="primary"
         shape="rounded"
@@ -26,4 +26,4 @@ const PaginationResBox = ({ numberOfPage }) => {
   );
 };
 
-export default PaginationResBox;
+export default PaginationResBox; 

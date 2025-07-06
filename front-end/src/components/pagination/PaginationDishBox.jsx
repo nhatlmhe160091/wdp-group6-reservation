@@ -1,14 +1,14 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import Pagination from '@mui/material/Pagination';
-import Stack from '@mui/material/Stack';
-import { changePageNumber } from "../../redux/slice/dishSlice";
+import { useDispatch, useSelector } from 'react-redux'; 
+import Pagination from '@mui/material/Pagination'; 
+import Stack from '@mui/material/Stack'; 
+import { changePageNumber } from "../../redux/slice/dishSlice"; 
 
-const PaginationDishBox = ({ numberOfPage }) => {
+const PaginationDishBox = ({ numberOfPage }) => { 
   const dispatch = useDispatch();
   const currentPage = useSelector((state) => state.dishes.pageNumber); // Lấy trang hiện tại từ Redux store
 
-  const handlePageChange = (event, value) => {
+  const handlePageChange = (event, value) => { 
     dispatch(changePageNumber(value));
   };
 

@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
-import { useDispatch } from "react-redux";
-import ReactPaginate from "react-paginate";
-import { changePageNumber } from "../../redux/slice/voucherSlice";
-const PaginationResBox = ({ numberOfPage }) => {
-  const dispatch = useDispatch();
+import { useDispatch } from "react-redux"; 
+import ReactPaginate from "react-paginate"; 
+import { changePageNumber } from "../../redux/slice/voucherSlice"; 
+const PaginationResBox = ({ numberOfPage }) => { 
+  const dispatch = useDispatch(); 
 
-  const handlePageClick = (data) => {
+  const handlePageClick = (data) => { 
     const selectedPage = data.selected + 1; // data.selected bắt đầu từ 0
-    dispatch(changePageNumber(selectedPage));
+    dispatch(changePageNumber(selectedPage)); 
   };
 
   return (
