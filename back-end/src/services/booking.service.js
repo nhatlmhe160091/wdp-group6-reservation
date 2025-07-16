@@ -444,6 +444,7 @@ return {
 
         return booking;
     };
+    
 }
 
 module.exports = new BookingService;
