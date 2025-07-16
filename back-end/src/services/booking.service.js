@@ -61,6 +61,7 @@ getBookingById = async (bookingId) => {
             return { error: true, message: error.message || 'Internal Server Error' };
         }
     };
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
     
@@ -612,6 +613,10 @@ return {
         return booking;
     };
 }
+=======
+    
+}
+>>>>>>> parent of fcbeaab (voucher done)
 
 
     getBookingsByCustomerId = async (customerId) => {
