@@ -444,7 +444,10 @@ return {
 
         return booking;
     };
+<<<<<<< Updated upstream
     
+=======
+>>>>>>> Stashed changes
 }
 
 module.exports = new BookingService;
