@@ -62,6 +62,7 @@ getBookingById = async (bookingId) => {
         }
     };
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
     
@@ -758,5 +759,9 @@ return {
         return booking;
     };
 }
+=======
+    
+}
+>>>>>>> parent of fcbeaab (voucher done)
 
 module.exports = new BookingService;
