@@ -62,9 +62,12 @@ getBookingById = async (bookingId) => {
         }
     };
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     
 }
 =======
+=======
+>>>>>>> Stashed changes
              /**
      * author: XXX
      */
@@ -151,6 +154,165 @@ const customerPromises = bookings.map(async (booking) => {
         } catch (error) {
             throw error;
         }
+<<<<<<< Updated upstream
+=======
+    }
+});
+
+await Promise.all(customerPromises);
+
+const totalBookings = await Booking.countDocuments(query);
+
+return {
+    data: bookings,
+    total: totalBookings,
+    currentPage: page,
+    totalPages: Math.ceil(totalBookings / limit),
+};
+        };
+           /**
+     * author: XXX
+     */
+        getBookingsByBookingTime = async (bookingTime, timeRange) => {              
+            try {                 
+                // console.log('Received bookingTime:', bookingTime);
+                // console.log('Received timeRange:', timeRange);
+                if(timeRange < 0) {
+                    throw new Error('Time range must be a positive number');
+                }
+                               
+                const bookingDateTime = new Date(bookingTime);                      
+                // console.log('Parsed bookingDateTime:', bookingDateTime);
+        
+                if (isNaN(bookingDateTime.getTime())) {                     
+                    throw new Error('Booking time is invalid');                 
+                }                      
+                
+                // Tính thời gian trước và sau bookingTime theo phút
+                const startTime = new Date(bookingDateTime);                 
+                startTime.setMinutes(startTime.getMinutes() - timeRange);  
+                // console.log('Calculated startTime:', startTime);
+                
+                const endTime = new Date(bookingDateTime);                 
+                endTime.setMinutes(endTime.getMinutes() + timeRange);  
+                // console.log('Calculated endTime:', endTime);
+                
+                              
+                const bookings = await Booking.find();
+                const filteredBookings = bookings.filter(booking => {
+                    const bookingDateTime = new Date(booking.bookingTime);
+                    return bookingDateTime >= startTime && bookingDateTime < endTime;
+                }).map(booking => {
+                    booking.bookingTime = new Date(booking.bookingTime);
+                    return booking;
+                });
+        
+                // console.log('Found filteredBookings:', filteredBookings);
+                
+             // tableed              
+                const bookingTableIds = filteredBookings.flatMap(booking => 
+                    booking.reservation?.table?.map(t => t.toString()) || []
+                );
+                const tablesInBookings = await Table.find({
+                    _id: { $in: bookingTableIds }
+                });
+                const bookingsWithTables = filteredBookings.map(booking => {
+                    booking.reservation.table = booking.reservation.table.map(tableId => 
+                        tablesInBookings.find(table => table._id.toString() === tableId.toString())
+                    );
+                    return booking;
+                });
+               //table not yet           
+                const availableTables = await Table.find({                 
+                    _id: { $nin: bookingTableIds }             
+                });                  
+                
+                // console.log('Found availableTables:', availableTables);
+        
+                // Trả về danh sách bookings và các table không bị đặt trước             
+                return {                 
+                    bookings: bookingsWithTables,                 
+                    availableTables             
+                };             
+            } catch (error) {                 
+                console.error('Error getting bookings by booking time:', error);                 
+                throw error;             
+            }         
+        };
+           /**
+     * author: XXX
+     */
+        updateReservationForBooking = async (bookingId, reservationData) => {
+            try {
+                const { table, status } = reservationData;
+    
+           
+                if (!table || !Array.isArray(table) || !table.length) {
+                    throw new Error('Missing required reservation data');
+                }
+                const tables = await Table.find({ _id: { $in: table } });
+                if (tables.length !== table.length) {
+                    throw new Error('One or more table IDs do not exist');
+                }
+              
+                const booking = await Booking.findById(bookingId);
+                if (!booking) {
+                    throw new Error('Booking not found');
+                }
+    
+               
+                booking.reservation = {
+                    table: table.map(id => ({ _id: id })),  
+                    status: status || 'RESERVED',
+                };
+                booking.status = 'TABLE_ASSIGNED';
+    
+                const updatedBooking = await booking.save();
+                // console.log('Updated booking with reservation:', updatedBooking);
+    
+                return updatedBooking; 
+            } catch (error) {
+                console.error('Error updating reservation for booking:', error);
+                throw error;
+            }
+        };
+        
+ 
+    insertBooking = async (
+        bookingTime,
+        customerId,
+        guestId,
+        note,
+        adultsCount = 1,
+        childrenCount = 0,
+        restaurantId,
+    ) => {
+        if (!customerId && !guestId) {
+            throw new Error('Lỗi không xác định được người đặt bàn');
+        }
+        bookingTime = new Date(bookingTime);
+        if (bookingTime <= Date.now()) {
+            throw new Error('Thời gian đặt bàn phải ở tương lai.');
+        }
+        const restaurant = Restaurant.findById(restaurantId);
+        if (!restaurant) {
+            throw new Error('Không tìm thấy nhà hàng hợp lệ')
+        }
+  
+        const newBooking = new Booking({
+            bookingTime,
+            customer: customerId || null,
+            guest: guestId || null,
+            note,
+            adultsCount,
+            childrenCount,
+            restaurant: restaurantId
+        })
+        const data = await newBooking.save();
+        return {
+            data
+        }
+>>>>>>> Stashed changes
     }
 });
 
@@ -309,6 +471,147 @@ return {
         }
     }
 >>>>>>> Stashed changes
+
+
+    getBookingsByCustomerId = async (customerId) => {
+        const bookings = await Booking.find({ customer: customerId })
+            .populate('restaurant')
+            .exec();
+        return {
+            data: bookings
+        };
+    }
+    getBookedTables = async () => {
+        const bookings = await Booking.find()
+            .populate('reservation.table');
+    
+        // Use a Map to store tables by their IDs and their closest booking time
+        const tableMap = new Map();
+        const currentTime = Date.now();
+    
+        bookings.forEach(booking => {
+            booking.reservation?.table.forEach(table => {
+                const tableId = table._id.toString();
+                const existingEntry = tableMap.get(tableId);
+                const bookingTime = booking.bookingTime;
+    
+                // If the table is not in the map or this booking time is closer to the current time, update it
+                if (!existingEntry || Math.abs(bookingTime - currentTime) < Math.abs(existingEntry.bookingTime - currentTime)) {
+                    tableMap.set(tableId, {
+                        table,
+                        bookingTime,
+                        status: booking?.reservation?.status,
+                        bookingId: booking._id
+                    });
+                }
+            });
+        });
+    
+        // Convert the Map values to an array
+        const bookedTables = Array.from(tableMap.values());
+    
+        return {
+            data: bookedTables
+        };
+    };
+    
+    
+    getBookingsByTableId = async (tableId) => {
+        const bookings = await Booking.find({ 'reservation.table': tableId })
+            .populate('customer')
+            .populate('guest')
+            .populate({
+                path: 'reservation.table', 
+                model: 'Table' 
+            });
+        return {
+            data: bookings
+        };
+    }
+    getBookingsByBookingTimeForTable = async (bookingTime, timeRange) => {              
+        try {                 
+            // console.log('Received bookingTime:', bookingTime);
+            // console.log('Received timeRange:', timeRange);
+            
+            if (timeRange < 0) {
+                throw new Error('Time range must be a positive number');
+            }
+            
+            // Adjust bookingTime by subtracting 7 hours (420 minutes)
+            const adjustedBookingTime = new Date(new Date(bookingTime).getTime() - 420 * 60000);
+            // console.log('Adjusted bookingTime (-7 hours):', adjustedBookingTime);
+            
+            if (isNaN(adjustedBookingTime.getTime())) {                     
+                throw new Error('Booking time is invalid');                 
+            }                      
+            
+            // Calculate start and end times based on adjusted bookingTime and timeRange
+            const startTime = new Date(adjustedBookingTime);                 
+            startTime.setMinutes(startTime.getMinutes() - timeRange);  
+            // console.log('Calculated startTime:', startTime);
+            
+            const endTime = new Date(adjustedBookingTime);                 
+            endTime.setMinutes(endTime.getMinutes() + timeRange);  
+            // console.log('Calculated endTime:', endTime);
+            
+            const bookings = await Booking.find();
+            const filteredBookings = bookings.filter(booking => {
+                const bookingDateTime = new Date(booking.bookingTime);
+                return bookingDateTime >= startTime && bookingDateTime < endTime;
+            }).map(booking => {
+                booking.bookingTime = new Date(booking.bookingTime);
+                return booking;
+            });
+    
+            // console.log('Found filteredBookings:', filteredBookings);
+            
+            // Extract table IDs from filtered bookings
+            const bookingTableIds = filteredBookings.flatMap(booking => 
+                booking.reservation?.table?.map(t => t.toString()) || []
+            );
+            const tablesInBookings = await Table.find({
+                _id: { $in: bookingTableIds }
+            });
+            const bookingsWithTables = filteredBookings.map(booking => {
+                booking.reservation.table = booking.reservation.table.map(tableId => 
+                    tablesInBookings.find(table => table._id.toString() === tableId.toString())
+                );
+                return booking;
+            });
+            
+            // Find tables that are not in any bookings
+            const availableTables = await Table.find({                 
+                _id: { $nin: bookingTableIds }             
+            });                  
+            
+            // console.log('Found availableTables:', availableTables);
+    
+            // Return filtered bookings and available tables             
+            return {                 
+                bookings: bookingsWithTables,                 
+                availableTables             
+            };             
+        } catch (error) {                 
+            console.error('Error getting bookings by booking time:', error);                 
+            throw error;             
+        }         
+    };
+     updateReservationStatus = async (bookingId, status) => {
+        const booking = await Booking.findById(bookingId);
+        if (!booking) {
+            throw new Error('Booking not found');
+        }
+
+        if (!booking.reservation) {
+            throw new Error('Reservation not found in booking');
+        }
+
+        booking.reservation.status = status;
+        await booking.save();
+
+        return booking;
+    };
+}
 
 
     getBookingsByCustomerId = async (customerId) => {
