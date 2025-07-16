@@ -26,16 +26,16 @@ import LoadingOverlay from '../general/loadingOverlay';
 var daysSelect = [];
 var monthsSelect = [];
 var yearsSelect = [];
-var i;
+var i; 
 for (i = 1; i <= 31; i++) {
-    daysSelect.push(i);
-}
+    daysSelect.push(i); 
+} 
 
-for (i = 1; i <= 12; i++) {
-    monthsSelect.push(i);
-}
+for (i = 1; i <= 12; i++) { 
+    monthsSelect.push(i); 
+} 
 
-for (i = 2024; i >= 1906; i--) {
+for (i = 2024; i >= 1906; i--) { 
     yearsSelect.push(i);
 }
 
@@ -50,15 +50,15 @@ export default function EditProfileDialog({ open, setOpen }) {
     const [year, setYear] = useState(2024);
     const [phoneNumber, setPhoneNumber] = useState(currentUser?.phoneNumber);
     const [gender, setGender] = useState(currentUser?.gender);
-    const [password, setPassword] = useState("");
+    const [password, setPassword] = useState(""); 
 
     // Snackbar state
-    const [openNotification, setOpenNotification] = useState(false);
-    const [messageNotification, setMessageNotification] = useState('');
-    const [severityNotification, setSeverityNotification] = useState('info');
+    const [openNotification, setOpenNotification] = useState(false);  
+    const [messageNotification, setMessageNotification] = useState(''); 
+    const [severityNotification, setSeverityNotification] = useState('info');  
 
     const handleClose = () => {
-        setOpen(false);
+        setOpen(false); 
     };
 
     useEffect(() => {
@@ -76,28 +76,28 @@ export default function EditProfileDialog({ open, setOpen }) {
             setMessageNotification("Bạn chưa nhập lại mật khẩu!");
             setSeverityNotification('error');
             setOpenNotification(true);
-            return;
+            return;  
         }
         if (firstName.length === 0 || firstName.length === 0 || phoneNumber.length === 0) {
             setMessageNotification("Các trường thông tin không thể để trống!")
-            setSeverityNotification('error');
-            setOpenNotification(true);
-            return;
+            setSeverityNotification('error'); 
+            setOpenNotification(true); 
+            return;  
         }
-        setLoading(true);
+        setLoading(true);   
         try {
             await doSignInWithEmailAndPassword(currentUser?.email, password);
             const dob = `${month}-${day}-${year}`;
             const filter = {
                 fname: firstName, lname: lastName, dob, phoneNumber, gender
             }
-            await UserService.updateCustomerInfo(filter);
+            await UserService.updateCustomerInfo(filter); 
             await refreshUserData();
             setSeverityNotification('success');
             setMessageNotification("Thay đổi thông tin cá nhân thành công!");
             setOpenNotification(true);
-            setLoading(false);
-            return handleClose();
+            setLoading(false); 
+            return handleClose(); 
         } catch (error) {
             setSeverityNotification('error');
             if (error.code === 'auth/invalid-credential') {
@@ -106,8 +106,8 @@ export default function EditProfileDialog({ open, setOpen }) {
             else {
                 setMessageNotification(error.message);
             }
-            setOpenNotification(true);
-            return setLoading(false);
+            setOpenNotification(true); 
+            return setLoading(false); 
         }
     }
 
@@ -116,7 +116,7 @@ export default function EditProfileDialog({ open, setOpen }) {
             <NotificationSnackbar open={openNotification} setOpen={setOpenNotification} message={messageNotification} severity={severityNotification}></NotificationSnackbar>
             <Dialog
                 open={open}
-                onClose={handleClose}
+                onClose={handleClose} 
             >
                 <LoadingOverlay open={loading}></LoadingOverlay>
                 <DialogTitle sx={{ fontWeight: 'bold', fontSize: 'h4.fontSize', textAlign: 'center' }}>Chỉnh sửa thông tin cá nhân</DialogTitle>
@@ -216,7 +216,7 @@ export default function EditProfileDialog({ open, setOpen }) {
                                         <FormControlLabel value="MALE" control={<Radio />} label="Nam giới" />
                                         <FormControlLabel value="OTHER" control={<Radio />} label="Khác" />
                                     </RadioGroup>
-                                </FormControl>
+                                </FormControl> 
                             </Grid>
 
                             <Grid size={6} sx={{ mt: 1 }}>
