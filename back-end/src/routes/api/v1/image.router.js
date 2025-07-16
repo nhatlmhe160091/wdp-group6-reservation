@@ -3,7 +3,7 @@ const router = express.Router();
 const { AuthMiddleware } = require('../../../middlewares/index');
 const imagesController = require('../../../controllers/images.controller');
 /**
- * author: ThinhND
+ * author: NgocNB
  */
 router.get('/get-image/:entityId', imagesController.getImagesByEntityId);
 router.post('/upload-image', imagesController.uploadImage);
