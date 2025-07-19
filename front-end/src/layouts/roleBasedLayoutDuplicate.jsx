@@ -13,20 +13,20 @@ const RoleBasedLayout = () => {
     const [openEmailVerifierDialog, setOpenEmailVerifierDialog] = useState(false);
     const [email, setEmail] = useState(currentUser?.email);
     useEffect(() => {
-        if (isUserLoggedIn) {
-            setEmail(currentUser?.email);
+        if (isUserLoggedIn) { 
+            setEmail(currentUser?.email); 
         }
-    }, [isUserLoggedIn, currentUser]);
+    }, [isUserLoggedIn, currentUser]); 
 
-    useEffect(() => {
+    useEffect(() => { 
         if (currentUser?.role === 'CUSTOMER' && currentUser?.emailVerified === false) {
             setOpenEmailVerifierDialog(true);
             const signOut = async () => {
-                await doSignOut();
+                await doSignOut(); 
             }
-            signOut();
+            signOut(); 
         }
-    }, [currentUser]);
+    }, [currentUser]); 
 
     useEffect(() => {
         if (currentUser?.role === 'MANAGER') {
