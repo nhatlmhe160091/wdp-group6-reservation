@@ -1,13 +1,13 @@
 import CustomerLayout from './customerLayout';
-import GuestLayout from './guestLayout';
-import { useAuth } from '../contexts/authContext';
-import { useEffect, useState } from 'react';
-import EmailVerifierDialog from '../components/dialogs/emailVerifieDialogr';
-import { doSignOut } from '../firebase/auth';
-import ManagerLayout from './managerLayout';
-import { useNavigate } from 'react-router-dom';
-import AdminLayout from './adminLayout';
-const RoleBasedLayout = () => {
+import GuestLayout from './guestLayout'; 
+import { useAuth } from '../contexts/authContext'; 
+import { useEffect, useState } from 'react'; 
+import EmailVerifierDialog from '../components/dialogs/emailVerifieDialogr'; 
+import { doSignOut } from '../firebase/auth'; 
+import ManagerLayout from './managerLayout'; 
+import { useNavigate } from 'react-router-dom'; 
+import AdminLayout from './adminLayout'; 
+const RoleBasedLayout = () => { 
     const navigate = useNavigate();
     const { currentUser, isUserLoggedIn } = useAuth();
     const [openEmailVerifierDialog, setOpenEmailVerifierDialog] = useState(false);
