@@ -12,12 +12,21 @@ import {
   ListItemText,
   Divider,
   Typography,
+<<<<<<< Updated upstream
 } from "@mui/material"; 
 import RestaurantIcon from "@mui/icons-material/Restaurant"; 
 import AdminHeader from "../components/headers/adminHeader"; 
 import StorefrontIcon from "@mui/icons-material/Storefront"; 
 import People from "@mui/icons-material/People"; 
 import TableBarIcon from "@mui/icons-material/TableBar"; 
+=======
+} from "@mui/material";
+import RestaurantIcon from "@mui/icons-material/Restaurant";
+import AdminHeader from "../components/headers/adminHeader";
+import StorefrontIcon from "@mui/icons-material/Storefront";
+import People from "@mui/icons-material/People";
+import TableBarIcon from "@mui/icons-material/TableBar";
+>>>>>>> Stashed changes
 
 const drawerWidth = 240;
 

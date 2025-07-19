@@ -2,14 +2,14 @@ const { Restaurant, Voucher, Dish } = require('../models/index');
 
 class RestaurantService {
     /**
-    * author: thaikv
+    * author: XXX
     */
     getAllRestaurants = async () => {
         return await Restaurant.find();
     }
 
     /**
-    * author: thaikv
+    * author: XXX
     */
     getPaginatedRestaurants = async (page = 1, limit = 10, name) => {
         const filter = {};
@@ -36,7 +36,7 @@ class RestaurantService {
     }
 
     /**
-    * author: thaikv
+    * author: XXX
     */
     getRestaurantsByVoucherId = async (voucherId) => {
         const voucher = await Voucher.findById(voucherId)
@@ -54,7 +54,7 @@ class RestaurantService {
     };
 
     /**
-    * author: thaikv
+    * author: XXX
     */
     getRestaurantsByDishId = async (dishId) => {
         const dish = await Dish.findById(dishId)
@@ -72,7 +72,7 @@ class RestaurantService {
     };
 
     /**
-    * author: thaikv
+    * author: XXX
     */
     getRestaurant = async (restaurantId) => {
         const restaurant = await Restaurant.findById(restaurantId)
@@ -86,28 +86,28 @@ class RestaurantService {
     };
 
     /**
-    * author: Thaikx
+    * author: NgocNB
     */
     getAllRestaurantsNgocNB = async () => {
         return await Restaurant.find();
     }
 
     /**
-    * author: Thaikx
+    * author: NgocNB
     */
     countRestaurants = async () => {
         return await Restaurant.countDocuments();
     }
 
     /**
-    * author: Thaikx
+    * author: NgocNB
     */
     findRestaurantsInPage = async (LIMIT, startIndex) => {
         return await Restaurant.find().sort({ _id: -1 }).limit(LIMIT).skip(startIndex);
     }
 
     /**
-    * author: Thaikv
+    * author: NgocNB
     */
     createRestaurant = async (restaurantData) => {
         const newRestaurant = new Restaurant(restaurantData);
@@ -115,14 +115,14 @@ class RestaurantService {
     }
 
     /**
-    * author: Thaikx
+    * author: NgocNB
     */
     updateRestaurant = async (id, updatedData) => {
         return await Restaurant.findByIdAndUpdate(id, updatedData, { new: true });
     }
 
     /**
-    * author: Thaikv
+    * author: NgocNB
     */
     deleteRestaurant = async (id) => {
         return await Restaurant.findByIdAndDelete(id); // Xóa nhà hàng theo id
