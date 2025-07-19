@@ -116,23 +116,23 @@ class DishService {
     //----------------------------------------------------------------------------------
 
     /**
-    * author: thaikv
+    * author: NgocNB
     */
-    getAllDishesthaikv = async () => {
+    getAllDishesNgocNB = async () => {
         return await Dish.find()
             .populate('restaurants')
             .populate('images');
     }
 
     /**
-    * author: thaikv
+    * author: NgocNB
     */
     countDishes = async () => {
         return await Dish.countDocuments();
     }
 
     /**
-    * author: thaikv
+    * author: NgocNB
     */
     findDishesInPage = async (LIMIT, startIndex) => {
         return await Dish.find()
@@ -144,7 +144,7 @@ class DishService {
     }
 
     /**
-    * author: thaikv
+    * author: NgocNB
     */
     createDish = async (dishData) => {
         const newDish = new Dish(dishData);
@@ -152,7 +152,7 @@ class DishService {
     }
 
     /**
-    * author: thaikv
+    * author: NgocNB
     */
     updateDish = async (id, updatedData) => {
         const { restaurants, images, ...otherUpdatedData } = updatedData;
@@ -170,7 +170,7 @@ class DishService {
     }
 
     /**
-    * author: thaikv
+    * author: NgocNB
     */
     addImageToDish = async (dishId, imageUrl, altText) => {
         const newImage = await Image.create({
@@ -187,14 +187,14 @@ class DishService {
     }
 
     /**
-    * author: thaikv
+    * author: NgocNB
     */
     deleteDish = async (id) => {
         return await Dish.findByIdAndDelete(id);
     }
 
     /**
-    * author: thaikv
+    * author: NgocNB
     */
     getDishImages = async (dishId) => {
         return await Image.find({ entityId: dishId, entityType: 'DISH' });
