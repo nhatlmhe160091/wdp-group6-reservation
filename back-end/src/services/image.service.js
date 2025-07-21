@@ -5,46 +5,46 @@ class ImageService {
         return await Image.find();
     }
 
-<<<<<<< Updated upstream
-=======
+<<<<<<< HEAD
     /**
      * author: NgocNB
      */
->>>>>>> Stashed changes
+=======
+>>>>>>> parent of 9f11fb4 (fix bug)
     createNewImage = async (data) => {
 
         return await Image.create(data);
     }
 
-<<<<<<< Updated upstream
-
-=======
+<<<<<<< HEAD
     /**
      * author: NgocNB
      */
->>>>>>> Stashed changes
+=======
+
+>>>>>>> parent of 9f11fb4 (fix bug)
     getImagesByEntityId = async (entityId) => {
         return await Image.find({ entityId });
     }
 
-<<<<<<< Updated upstream
-
-=======
+<<<<<<< HEAD
     /**
      * author: NgocNB
      */
->>>>>>> Stashed changes
+=======
+
+>>>>>>> parent of 9f11fb4 (fix bug)
     getImageById = async (imageId) => {
         return await Image.findById(imageId);
     }
 
-<<<<<<< Updated upstream
-
-=======
+<<<<<<< HEAD
     /**
      * author: NgocNB
      */
->>>>>>> Stashed changes
+=======
+
+>>>>>>> parent of 9f11fb4 (fix bug)
     deleteImageById = async (imageId) => {
         return await Image.findByIdAndDelete(imageId);
     }

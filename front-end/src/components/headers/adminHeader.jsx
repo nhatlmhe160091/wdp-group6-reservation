@@ -14,11 +14,7 @@ import Link from '@mui/material/Link';
 import { useAuth } from '../../contexts/authContext';
 import ProfileDialog from '../dialogs/profileDialog';
 
-<<<<<<< Updated upstream
-function AdminHeader() { 
-=======
 function AdminHeader() {
->>>>>>> Stashed changes
     const navigate = useNavigate();
     const { currentUser, isUserLoggedIn } = useAuth();
     const [user, setUser] = React.useState(null);
@@ -26,11 +22,7 @@ function AdminHeader() {
     const [openProfileDialog, setOpenProfileDialog] = React.useState(false);
 
     const handleOpenUserMenu = (event) => {
-<<<<<<< Updated upstream
-        setAnchorElUser(event.currentTarget); 
-=======
         setAnchorElUser(event.currentTarget);
->>>>>>> Stashed changes
     };
 
     const handleCloseUserMenu = () => {
@@ -45,20 +37,12 @@ function AdminHeader() {
         if (isUserLoggedIn) {
             setUser(currentUser);
         }
-<<<<<<< Updated upstream
-    }, [currentUser, isUserLoggedIn]) 
-=======
     }, [currentUser, isUserLoggedIn])
->>>>>>> Stashed changes
    const drawerWidth = 240;
     return (
         <>
            <AppBar
-<<<<<<< Updated upstream
-                position="fixed" 
-=======
                 position="fixed"
->>>>>>> Stashed changes
                 sx={{
                     width: `calc(100% - ${drawerWidth}px)`,
                     ml: `${drawerWidth}px`,
@@ -72,13 +56,8 @@ function AdminHeader() {
                         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
                     },
                 }}
-<<<<<<< Updated upstream
-            > 
-                <Container maxWidth="xl"> 
-=======
             >
                 <Container maxWidth="xl">
->>>>>>> Stashed changes
                     <Toolbar disableGutters>
                         <TableBarIcon onClick={() => navigate('/admin/dish')} sx={{ cursor: 'pointer', display: { xs: 'none', md: 'flex' }, mr: 1 }} />
                         <Typography
@@ -139,13 +118,8 @@ function AdminHeader() {
                                 <MenuItem onClick={handleSignOut}>
                                     <Typography sx={{ textAlign: 'center' }}>Đăng xuất</Typography>
                                 </MenuItem>
-<<<<<<< Updated upstream
-                            </Menu> 
-                        </Box> 
-=======
                             </Menu>
                         </Box>
->>>>>>> Stashed changes
                     </Toolbar>
                 </Container>
             </AppBar>

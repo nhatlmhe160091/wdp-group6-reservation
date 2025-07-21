@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+<<<<<<< HEAD
 import React, { useState } from 'react';
 import { TextField, Button, FormControl, InputLabel, Select, MenuItem, Box } from '@mui/material';
 import UserService from '../../../services/userService';
@@ -14,7 +14,7 @@ const UpdateUser = ({ user, onClose }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         await UserService.updateAccountInfo(user._id, fname, lname, dob, phoneNumber, gender, role);
-        alert('User information updated!');
+        alert('Cập nhật thông tin người dùng thành công!');
         onClose(); // Close dialog after updating
     };
 
@@ -94,4 +94,4 @@ const UpdateUser = ({ user, onClose }) => {
 };
 
 export default UpdateUser;
->>>>>>> Stashed changes
+>>>>>>> parent of 9f11fb4 (fix bug)

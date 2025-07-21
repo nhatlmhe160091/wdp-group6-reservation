@@ -1,9 +1,9 @@
-import { Outlet } from 'react-router-dom'; 
-import GuestHeader from '../components/headers/guestHeader'; 
-import Grid from '@mui/material/Grid2'; 
-import Box from '@mui/material/Box'; 
-import Footer from '../components/footers/Footer'; 
-const GuestLayout = () => { 
+import { Outlet } from 'react-router-dom';
+import GuestHeader from '../components/headers/guestHeader';
+import Grid from '@mui/material/Grid2';
+import Box from '@mui/material/Box';
+import Footer from '../components/footers/Footer';
+const GuestLayout = () => {
     return (
         <>
             <Box>
@@ -21,5 +21,5 @@ const GuestLayout = () => {
             </Box>
         </>
     )
-} 
-export default GuestLayout; 
+}
+export default GuestLayout;

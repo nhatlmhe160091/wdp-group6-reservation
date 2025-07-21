@@ -11,13 +11,13 @@ import {
 } from '@mui/material';
 import BookingService from '../../services/bookingService';
 
-function ShowBookingTableModal({ tableId,tableNumber, open, onClose }) { 
-  const [bookings, setBookings] = useState([]); 
+function ShowBookingTableModal({ tableId,tableNumber, open, onClose }) {
+  const [bookings, setBookings] = useState([]);
 
-  useEffect(() => { 
-    if (open && tableId) { 
+  useEffect(() => {
+    if (open && tableId) {
       const fetchBookings = async () => {
-        try { 
+        try {
           const response = await BookingService.getBookingsByTableId(tableId);
           setBookings(response.data);
           console.log("bookings", bookings);

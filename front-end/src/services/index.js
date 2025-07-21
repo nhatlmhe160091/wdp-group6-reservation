@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+<<<<<<< HEAD
 import axios from 'axios';
 import { backendAPI } from '../utils/constants';
 const api = axios.create({
@@ -58,5 +58,5 @@ api.interceptors.request.use(
     }
 );
 
->>>>>>> Stashed changes
+>>>>>>> parent of 9f11fb4 (fix bug)
 export default api;

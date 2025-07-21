@@ -81,8 +81,8 @@ const userSchema = new Schema({
     role: {
         type: String,
         enum: {
-            values: ['CUSTOMER', 'MANAGER', 'ADMIN'],
-            message: "Role phải là một trong các giá trị: CUSTOMER, MANAGER, ADMIN."
+            values: ['CUSTOMER', 'STAFF', 'MANAGER', 'ADMIN'],
+            message: "Role phải là một trong các giá trị: CUSTOMER, STAFF, MANAGER, ADMIN."
         },
         required: [true, "Role là bắt buộc."]
     }
