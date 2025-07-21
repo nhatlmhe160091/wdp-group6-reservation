@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+<<<<<<< HEAD
 import api from './index'
 import { handleApiCall } from '../utils/handleApi';
 
@@ -30,4 +30,4 @@ const GuestService = {
 }
 
 export default GuestService;
->>>>>>> Stashed changes
+>>>>>>> parent of 9f11fb4 (fix bug)

@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+<<<<<<< HEAD
 import React, { useState,useEffect } from 'react';
 import { TextField, Button, FormControl, InputLabel, Select, MenuItem, Box } from '@mui/material';
 import UserService from '../../../services/userService';
@@ -106,5 +106,5 @@ const RegisterUser = () => {
     );
 };
 
->>>>>>> Stashed changes
+>>>>>>> parent of 9f11fb4 (fix bug)
 export default RegisterUser;

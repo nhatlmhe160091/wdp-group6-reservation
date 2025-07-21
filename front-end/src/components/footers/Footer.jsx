@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+<<<<<<< HEAD
 import * as React from 'react';
 import { Box, Container, Grid, Typography, Link, IconButton } from '@mui/material';
 import TableBarIcon from '@mui/icons-material/TableBar';
@@ -226,4 +226,4 @@ export default function Footer() {
         </ThemeProvider>
     );
 }
->>>>>>> Stashed changes
+>>>>>>> parent of 9f11fb4 (fix bug)

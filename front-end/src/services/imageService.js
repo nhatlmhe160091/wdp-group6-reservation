@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+<<<<<<< HEAD
 import api from './index'
 import { handleApiCall } from '../utils/handleApi';
 
@@ -24,4 +24,4 @@ const ImageService = {
 }
 
 export default ImageService;
->>>>>>> Stashed changes
+>>>>>>> parent of 9f11fb4 (fix bug)

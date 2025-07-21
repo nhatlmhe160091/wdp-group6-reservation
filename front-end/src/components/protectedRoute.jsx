@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+<<<<<<< HEAD
 import { Navigate } from "react-router-dom";
 import { useAuth } from "../contexts/authContext";
 import { doSignOut } from "../firebase/auth"
@@ -50,5 +50,5 @@ const ProtectedRoute = ({ children, requiredRoles }) => {
     }
 };
 
->>>>>>> Stashed changes
+>>>>>>> parent of 9f11fb4 (fix bug)
 export default ProtectedRoute;
