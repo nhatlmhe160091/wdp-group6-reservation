@@ -201,23 +201,23 @@ class VoucherService {
     };
 
     /**
-    * author: ThinhND
+    * author: NgocNB
     */
-    getAllVouchersThinhND = async () => {
+    getAllVouchersNgocNB = async () => {
         return await Voucher.find()
             .populate('dishes')
             .populate('restaurants');
     }
 
     /**
-    * author: ThinhND
+    * author: NgocNB
     */
     countVouchers = async () => {
         return await Voucher.countDocuments();
     }
 
     /**
-    * author: ThinhND
+    * author: NgocNB
     */
     findVouchersInPage = async (LIMIT, startIndex) => {
         return await Voucher.find()
@@ -229,7 +229,7 @@ class VoucherService {
     }
 
     /**
-    * author: ThinhND
+    * author: NgocNB
     */
     createVoucher = async (voucherData) => {
         const newVoucher = new Voucher(voucherData);
@@ -237,7 +237,7 @@ class VoucherService {
     }
 
     /**
-    * author: ThinhND
+    * author: NgocNB
     */
     updateVoucher = async (id, updatedData) => {
         const { dishes, restaurants, ...otherUpdatedData } = updatedData;
@@ -257,16 +257,16 @@ class VoucherService {
     }
 
     /**
-    * author: ThinhND
+    * author: NgocNB
     */
     deleteVoucher = async (id) => {
         return await Voucher.findByIdAndDelete(id);
     }
 
     /**
-    * author: ThinhND
+    * author: NgocNB
     */
-    getPaginatedVouchersThinhND = async (page = 1, limit = 10) => {
+    getPaginatedVouchersNgocNB = async (page = 1, limit = 10) => {
         const skip = (page - 1) * limit;
 
         const vouchers = await Voucher.find()
@@ -302,7 +302,7 @@ class VoucherService {
     }
 
     /**
-    * author: ThinhND
+    * author: NgocNB
     */
     addVoucherForAll = async (code, discountPercentage, validFrom, validTo, pointsRequired, description) => {
         const restaurants = await Restaurant.find();
