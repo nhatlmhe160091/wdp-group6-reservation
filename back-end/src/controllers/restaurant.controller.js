@@ -75,7 +75,7 @@ class RestaurantController {
     /**
      * method: GET
      * router(/api/v1/restaurant
-     * author: NgocNB
+     * author: SonTP
      */
     getAllRestaurantsNgocNB = async (req, res, next) => {
         try {
@@ -88,7 +88,7 @@ class RestaurantController {
         }
     }
 
-    // author: NgocNB
+    // author: SonTP
     getPaginatedRestaurantsNgocNB = async (req, res, next) => {
         const { page } = req.query;
         try {
@@ -108,7 +108,7 @@ class RestaurantController {
     }
 
     // Thêm nhà hàng mới
-    // author: NgocNB
+    // author: SonTP
     createRestaurant = async (req, res, next) => {
         try {
             const newRestaurant = req.body;
@@ -123,7 +123,7 @@ class RestaurantController {
     }
 
     // Cập nhật nhà hàng
-    // author: NgocNB
+    // author: SonTP
     updateRestaurant = async (req, res, next) => {
         const { id } = req.params;
         const updatedRestaurantData = req.body;
@@ -142,7 +142,7 @@ class RestaurantController {
     }
 
     // Xóa nhà hàng
-    // author: NgocNB
+    // author: SonTP
 
     deleteRestaurant = async (req, res, next) => {
         const { id } = req.params;
@@ -160,7 +160,7 @@ class RestaurantController {
     }
 
     // Thêm món ăn vào nhà hàng
-    // author: NgocNB
+    // author: SonTP
     createDishForRestaurant = async (req, res, next) => {
         const { restaurantId } = req.params;
         const newDish = req.body;
@@ -184,7 +184,7 @@ class RestaurantController {
     }
 
     // Cập nhật món ăn của nhà hàng
-    // author: NgocNB
+    // author: SonTP
 
     updateDishForRestaurant = async (req, res, next) => {
         const { restaurantId, dishId } = req.params;
@@ -206,7 +206,7 @@ class RestaurantController {
     }
 
     // Xóa món ăn khỏi nhà hàng
-    // author: NgocNB
+    // author: SonTP
     deleteDishForRestaurant = async (req, res, next) => {
         const { restaurantId, dishId } = req.params;
         try {

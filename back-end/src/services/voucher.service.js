@@ -201,7 +201,7 @@ class VoucherService {
     };
 
     /**
-    * author: NgocNB
+    * author: NhatLM
     */
     getAllVouchersNgocNB = async () => {
         return await Voucher.find()
@@ -210,14 +210,14 @@ class VoucherService {
     }
 
     /**
-    * author: NgocNB
+    * author: NhatLM
     */
     countVouchers = async () => {
         return await Voucher.countDocuments();
     }
 
     /**
-    * author: NgocNB
+    * author: NhatLM
     */
     findVouchersInPage = async (LIMIT, startIndex) => {
         return await Voucher.find()
@@ -229,7 +229,7 @@ class VoucherService {
     }
 
     /**
-    * author: NgocNB
+    * author: NhatLM
     */
     createVoucher = async (voucherData) => {
         const newVoucher = new Voucher(voucherData);
@@ -237,7 +237,7 @@ class VoucherService {
     }
 
     /**
-    * author: NgocNB
+    * author: NhatLM
     */
     updateVoucher = async (id, updatedData) => {
         const { dishes, restaurants, ...otherUpdatedData } = updatedData;
@@ -257,14 +257,14 @@ class VoucherService {
     }
 
     /**
-    * author: NgocNB
+    * author: NhatLM
     */
     deleteVoucher = async (id) => {
         return await Voucher.findByIdAndDelete(id);
     }
 
     /**
-    * author: NgocNB
+    * author: NhatLM
     */
     getPaginatedVouchersNgocNB = async (page = 1, limit = 10) => {
         const skip = (page - 1) * limit;
@@ -302,7 +302,7 @@ class VoucherService {
     }
 
     /**
-    * author: NgocNB
+    * author: NhatLM
     */
     addVoucherForAll = async (code, discountPercentage, validFrom, validTo, pointsRequired, description) => {
         const restaurants = await Restaurant.find();

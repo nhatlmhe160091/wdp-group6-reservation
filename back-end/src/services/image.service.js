@@ -6,7 +6,7 @@ class ImageService {
     }
 
     /**
-     * author: NgocNB
+     * author: ThaiKV
      */
     createNewImage = async (data) => {
 
@@ -14,21 +14,21 @@ class ImageService {
     }
 
     /**
-     * author: NgocNB
+     * author: ThaiKV
      */
     getImagesByEntityId = async (entityId) => {
         return await Image.find({ entityId });
     }
 
     /**
-     * author: NgocNB
+     * author: ThaiKV
      */
     getImageById = async (imageId) => {
         return await Image.findById(imageId);
     }
 
     /**
-     * author: NgocNB
+     * author: ThaiKV
      */
     deleteImageById = async (imageId) => {
         return await Image.findByIdAndDelete(imageId);

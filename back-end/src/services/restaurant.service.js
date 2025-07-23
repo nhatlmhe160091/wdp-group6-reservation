@@ -86,28 +86,28 @@ class RestaurantService {
     };
 
     /**
-    * author: NgocNB
+    * author: NhatLM
     */
     getAllRestaurantsNgocNB = async () => {
         return await Restaurant.find();
     }
 
     /**
-    * author: NgocNB
+    * author: NhatLM
     */
     countRestaurants = async () => {
         return await Restaurant.countDocuments();
     }
 
     /**
-    * author: NgocNB
+    * author: NhatLM
     */
     findRestaurantsInPage = async (LIMIT, startIndex) => {
         return await Restaurant.find().sort({ _id: -1 }).limit(LIMIT).skip(startIndex);
     }
 
     /**
-    * author: NgocNB
+    * author: NhatLM
     */
     createRestaurant = async (restaurantData) => {
         const newRestaurant = new Restaurant(restaurantData);
@@ -115,14 +115,14 @@ class RestaurantService {
     }
 
     /**
-    * author: NgocNB
+    * author: NhatLM
     */
     updateRestaurant = async (id, updatedData) => {
         return await Restaurant.findByIdAndUpdate(id, updatedData, { new: true });
     }
 
     /**
-    * author: NgocNB
+    * author: NhatLM
     */
     deleteRestaurant = async (id) => {
         return await Restaurant.findByIdAndDelete(id); // Xóa nhà hàng theo id

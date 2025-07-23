@@ -76,7 +76,7 @@ class DishController {
     /**
       * method: GET
       * router(/api/v1/dish)
-      * author: NgocNB
+      * author: ThinhND
       */
     getAllDishesNgocNB = async (req, res, next) => {
         try {
@@ -92,7 +92,7 @@ class DishController {
     /**
      * method: GET
      * router(/api/v1/dish/paginated)
-     * author: NgocNB
+     * author: ThinhND
      */
     getPaginatedDishesNgocNB = async (req, res, next) => {
         const { page = 1 } = req.query; // Mặc định trang là 1 nếu không có trang nào được gửi
@@ -115,7 +115,7 @@ class DishController {
     /**
      * method: POST
      * router(/api/v1/dish)
-     * author: NgocNB
+     * author: ThinhND
      */
     createDish = async (req, res, next) => {
         try {
@@ -133,7 +133,7 @@ class DishController {
     /**
      * method: PUT
      * router(/api/v1/dish/:id)
-     * author: NgocNB
+     * author: ThinhND
      */
     updateDish = async (req, res, next) => {
         const { id } = req.params; // Lấy id món ăn từ URL params
@@ -158,7 +158,7 @@ class DishController {
     /**
      * method: DELETE
      * router(/api/v1/dish/:id)
-     * author: NgocNB
+     * author: ThinhND
      */
     deleteDish = async (req, res, next) => {
         const { id } = req.params; // Lấy id món ăn từ URL params

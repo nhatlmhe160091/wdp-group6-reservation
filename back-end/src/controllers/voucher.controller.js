@@ -95,7 +95,7 @@ class VoucherController {
     /**
      * method: GET
      * router(/api/v1/voucher)
-     * author: NgocNB
+     * author: SonTP
      */
     getAllVouchersNgocNB = async (req, res, next) => {
         try {
@@ -111,7 +111,7 @@ class VoucherController {
     /**
      * method: POST
      * router(/api/v1/voucher)
-     * author: NgocNB
+     * author: SonTP
      */
     createVoucher = async (req, res, next) => {
         try {
@@ -129,7 +129,7 @@ class VoucherController {
     /**
      * method: PUT
      * router(/api/v1/voucher/:id)
-     * author: NgocNB
+     * author: SonTP
      */
     updateVoucher = async (req, res, next) => {
         const { id } = req.params; // Lấy id voucher từ URL params
@@ -154,7 +154,7 @@ class VoucherController {
     /**
      * method: DELETE
      * router(/api/v1/voucher/:id)
-     * author: NgocNB
+     * author: SonTP
      */
     deleteVoucher = async (req, res, next) => {
         const { id } = req.params; // Lấy id voucher từ URL params
