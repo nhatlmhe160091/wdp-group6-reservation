@@ -88,7 +88,7 @@ class RestaurantService {
     /**
     * author: NhatLM
     */
-    getAllRestaurantsNgocNB = async () => {
+    getAllRestaurantsv1 = async () => {
         return await Restaurant.find();
     }
 

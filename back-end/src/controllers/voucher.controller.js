@@ -97,9 +97,9 @@ class VoucherController {
      * router(/api/v1/voucher)
      * author: SonTP
      */
-    getAllVouchersNgocNB = async (req, res, next) => {
+    getAllVouchersv1 = async (req, res, next) => {
         try {
-            const vouchers = await VoucherService.getAllVouchersNgocNB();
+            const vouchers = await VoucherService.getAllVouchersv1();
             res.status(200).json({
                 data: vouchers,
             });

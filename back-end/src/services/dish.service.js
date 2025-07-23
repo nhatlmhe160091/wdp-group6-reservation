@@ -118,7 +118,7 @@ class DishService {
     /**
     * author: ThinhND
     */
-    getAllDishesNgocNB = async () => {
+    getAllDishesv1 = async () => {
         return await Dish.find()
             .populate('restaurants')
             .populate('images');

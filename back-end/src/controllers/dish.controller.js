@@ -78,9 +78,9 @@ class DishController {
       * router(/api/v1/dish)
       * author: ThinhND
       */
-    getAllDishesNgocNB = async (req, res, next) => {
+    getAllDishesv1 = async (req, res, next) => {
         try {
-            const dishes = await DishService.getAllDishesNgocNB();
+            const dishes = await DishService.getAllDishesv1();
             res.status(200).json({
                 data: dishes,
             });
@@ -94,7 +94,7 @@ class DishController {
      * router(/api/v1/dish/paginated)
      * author: ThinhND
      */
-    getPaginatedDishesNgocNB = async (req, res, next) => {
+    getPaginatedDishesv1 = async (req, res, next) => {
         const { page = 1 } = req.query; // Mặc định trang là 1 nếu không có trang nào được gửi
         try {
             const LIMIT = 10; // Số món ăn trên mỗi trang

@@ -11,8 +11,8 @@ router.get('/get-restaurants-by-dishId/:dishId', AuthMiddleware.checkRoles(['GUE
 router.get('/get-restaurant/:id', AuthMiddleware.checkRoles(['GUEST', 'CUSTOMER', 'STAFF', 'MANAGER', 'ADMIN']), RestaurantController.getRestaurant);
 
 
-router.get('/', RestaurantController.getAllRestaurantsNgocNB);
-router.get('/paginatedRestaurants', RestaurantController.getPaginatedRestaurantsNgocNB);
+router.get('/', RestaurantController.getAllRestaurantsv1);
+router.get('/paginatedRestaurants', RestaurantController.getPaginatedRestaurantsv1);
 router.post('/', RestaurantController.createRestaurant);
 router.put('/:id', RestaurantController.updateRestaurant);
 router.delete('/:id', RestaurantController.deleteRestaurant);

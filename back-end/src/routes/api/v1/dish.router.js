@@ -15,8 +15,8 @@ router.get('/', AuthMiddleware.checkRoles(['GUEST', 'CUSTOMER', 'STAFF', 'MANAGE
 router.get('/dev-insert-all-dish-for-all-restaurant', DishController.insertAllDishForAllRestaurant);
 
 
-router.get('/', DishController.getAllDishesNgocNB);
-router.get('/paginatedDishes', DishController.getAllDishesNgocNB);
+router.get('/', DishController.getAllDishesv1);
+router.get('/paginatedDishes', DishController.getAllDishesv1);
 router.post('/', DishController.createDish);
 router.put('/:id', DishController.updateDish);
 router.delete('/:id', DishController.deleteDish);

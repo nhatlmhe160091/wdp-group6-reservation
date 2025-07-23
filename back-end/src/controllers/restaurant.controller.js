@@ -77,9 +77,9 @@ class RestaurantController {
      * router(/api/v1/restaurant
      * author: SonTP
      */
-    getAllRestaurantsNgocNB = async (req, res, next) => {
+    getAllRestaurantsv1 = async (req, res, next) => {
         try {
-            const restaurants = await RestaurantService.getAllRestaurantsNgocNB();
+            const restaurants = await RestaurantService.getAllRestaurantsv1();
             res.status(200).json({
                 data: restaurants,
             });
@@ -89,7 +89,7 @@ class RestaurantController {
     }
 
     // author: SonTP
-    getPaginatedRestaurantsNgocNB = async (req, res, next) => {
+    getPaginatedRestaurantsv1 = async (req, res, next) => {
         const { page } = req.query;
         try {
             const LIMIT = 5;
