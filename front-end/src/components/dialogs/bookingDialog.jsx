@@ -78,7 +78,7 @@ export default function BookingDialog({ open, setOpen, adultsCount, setAdultsCou
     const [openNotification, setOpenNotification] = useState(false);
     const [messageNotification, setMessageNotification] = useState('');
     const [severityNotification, setSeverityNotification] = useState('info');
-  const [openDishModal, setOpenDishModal] = useState(false);
+    const [openDishModal, setOpenDishModal] = useState(false);
     const [selectedDishes, setSelectedDishes] = useState([]);
     useEffect(() => {
         if (isUserLoggedIn) {
@@ -93,43 +93,49 @@ export default function BookingDialog({ open, setOpen, adultsCount, setAdultsCou
     };
 
     const handleBooking = async () => {
-        var guestId = null;
-        if (!isUserLoggedIn) {
-            const filter = {
-                name,
-                phoneNumber,
-                email
-            };
-            try {
-                const res = await GuestService.insertGuest(filter);
-                guestId = res?.data?._id
-            } catch (error) {
-                setOpenNotification(true);
-                setMessageNotification(error.message);
-                setSeverityNotification('error');
-                return;
-            }
-        }
+    var guestId = null;
+    if (!isUserLoggedIn) {
+        const filter = {
+            name,
+            phoneNumber,
+            email
+        };
         try {
-            const filter = {
-                bookingTime: bookingTime.toDate(),
-                customerId: currentUser?._id,
-                guestId: guestId,
-                note,
-                adultsCount,
-                childrenCount,
-                restaurantId: restaurant?._id,
-                dishes: selectedDishes
-            }
-            await BookingService.insertBooking(filter);
-            setOpenThankDialog(true);
-            setOpen(false);
+            const res = await GuestService.insertGuest(filter);
+            guestId = res?.data?._id;
         } catch (error) {
             setOpenNotification(true);
             setMessageNotification(error.message);
             setSeverityNotification('error');
+            return;
         }
     }
+    try {
+        const filter = {
+            bookingTime: bookingTime.toDate(),
+            customerId: currentUser?._id,
+            guestId: guestId,
+            note,
+            adultsCount,
+            childrenCount,
+            restaurantId: restaurant?._id,
+            dishes: selectedDishes
+        };
+        await BookingService.insertBooking(filter);
+        if (currentUser?.role === 'MANAGER') {
+            setMessageNotification('Đặt bàn thành công!');
+            setSeverityNotification('success');
+            setOpenNotification(true);
+        } else {
+            setOpenThankDialog(true);
+        }
+        setOpen(false);
+    } catch (error) {
+        setOpenNotification(true);
+        setMessageNotification(error.message);
+        setSeverityNotification('error');
+    }
+}
 
 
     // const handleSendOtp = async () => {
@@ -151,7 +157,7 @@ export default function BookingDialog({ open, setOpen, adultsCount, setAdultsCou
     //         console.log(err.message);
     //     }
     // }
-console.log("restaurant", restaurant);
+    console.log("restaurant", restaurant);
     return (
         <React.Fragment>
             <Dialog
@@ -490,36 +496,36 @@ console.log("restaurant", restaurant);
                                             </LocalizationProvider>
                                         </Grid>
                                     </Grid>
-                                   
+
                                 </Box>
-                                 <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-    <Button
-        variant="contained"
-        color="primary"
-        onClick={() => setOpenDishModal(true)}
-        sx={{
-            px: 4,
-            py: 1.5,
-            fontWeight: 'bold',
-            borderRadius: 3,
-            boxShadow: 2,
-            textTransform: 'none',
-            fontSize: 18,
-            bgcolor: "#d02028",
-            '&:hover': { bgcolor: "#b8001f" }
-        }}
-        startIcon={<span role="img" aria-label="dish">🍽️</span>}
-    >
-        Chọn món ăn {selectedDishes.length > 0 && `(${selectedDishes.length})`}
-    </Button>
-    <SelectDishModal
-        open={openDishModal}
-        onClose={() => setOpenDishModal(false)}
-        restaurantId={restaurant?._id}
-        selectedDishes={selectedDishes}
-        setSelectedDishes={setSelectedDishes}
-    />
-</Box>
+                                <Box sx={{ mb: 2, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        onClick={() => setOpenDishModal(true)}
+                                        sx={{
+                                            px: 4,
+                                            py: 1.5,
+                                            fontWeight: 'bold',
+                                            borderRadius: 3,
+                                            boxShadow: 2,
+                                            textTransform: 'none',
+                                            fontSize: 18,
+                                            bgcolor: "#d02028",
+                                            '&:hover': { bgcolor: "#b8001f" }
+                                        }}
+                                        startIcon={<span role="img" aria-label="dish">🍽️</span>}
+                                    >
+                                        Chọn món ăn {selectedDishes.length > 0 && `(${selectedDishes.length})`}
+                                    </Button>
+                                    <SelectDishModal
+                                        open={openDishModal}
+                                        onClose={() => setOpenDishModal(false)}
+                                        restaurantId={restaurant?._id}
+                                        selectedDishes={selectedDishes}
+                                        setSelectedDishes={setSelectedDishes}
+                                    />
+                                </Box>
                             </Box>
                         </Grid>
                     </Grid>

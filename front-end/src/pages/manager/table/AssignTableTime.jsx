@@ -53,7 +53,8 @@ const AssignTableTime = () => {
   const [restaurants, setRestaurants] = useState([]);
   const [openBookingDialog, setOpenBookingDialog] = useState(false);
   const [selectedTable, setSelectedTable] = useState(null);
-
+  const [adultsCount, setAdultsCount] = useState(1);
+  const [childrenCount, setChildrenCount] = useState(0);
   // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
   const tablesPerPage = 9;
@@ -244,10 +245,10 @@ const AssignTableTime = () => {
         <BookingDialog
           open={openBookingDialog}
           setOpen={setOpenBookingDialog}
-          adultsCount={0}
-          setAdultsCount={() => { }}
-          childrenCount={0}
-          setChildrenCount={() => { }}
+          adultsCount={adultsCount}
+          setAdultsCount={setAdultsCount}
+          childrenCount={childrenCount}
+          setChildrenCount={setChildrenCount}
           bookingTime={bookingTime}
           setBookingTime={setBookingTime}
           restaurant={restaurant}
