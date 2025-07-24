@@ -12,7 +12,7 @@ router.get('/details-booking/:bookingId', BookingController.getBookingById);
 router.put('/update-booking/:bookingId', BookingController.updateBooking);
 router.patch('/update-reservation/:bookingId', BookingController.updateReservationForBooking);
 
-router.post('/insert-booking', AuthMiddleware.checkRoles(['GUEST', 'CUSTOMER']), BookingController.insertBooking);
+router.post('/insert-booking', BookingController.insertBooking);
 router.get('/get-bookings-by-customerId/:customerId', AuthMiddleware.checkRoles(['CUSTOMER']), BookingController.getBookingsByCustomerId);
 router.post('/send-otp', AuthMiddleware.checkRoles(['GUEST', 'CUSTOMER', 'STAFF', 'MANAGER', 'ADMIN']), BookingController.sendOtp);
 router.post('/verify-otp', AuthMiddleware.checkRoles(['GUEST', 'CUSTOMER', 'STAFF', 'MANAGER', 'ADMIN']), BookingController.verifyOtp);

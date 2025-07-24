@@ -101,7 +101,7 @@ const RestaurantBookingDashboard = () => {
         <Box display="flex" justifyContent="space-between" mb={4} alignItems="center">
           <Typography variant="h4" component="h1">Bảng điều khiển đặt bàn nhà hàng</Typography>
           <Box display="flex" alignItems="center" gap={2}>
-            <TextField
+            {/* <TextField
               label="Lọc theo ngày"
               type="date"
               size="small"
@@ -112,7 +112,7 @@ const RestaurantBookingDashboard = () => {
             />
             <IconButton onClick={() => setDarkMode(!darkMode)}>
               {darkMode ? <MdLightMode /> : <MdDarkMode />}
-            </IconButton>
+            </IconButton> */}
           </Box>
         </Box>
         {loading ? (
@@ -135,7 +135,7 @@ const RestaurantBookingDashboard = () => {
             </Grid>
 
             {/* Thống kê hôm nay */}
-            <Grid item xs={12} sm={6} md={4}>
+            {/* <Grid item xs={12} sm={6} md={4}>
               <StyledCard>
                 <CardContent>
                   <Typography variant="h6" color="textSecondary">Số bàn được đặt hôm nay</Typography>
@@ -176,7 +176,7 @@ const RestaurantBookingDashboard = () => {
                   )}
                 </CardContent>
               </StyledCard>
-            </Grid>
+            </Grid> */}
 
             <Grid item xs={12} md={8}>
               <StyledCard>

@@ -5,9 +5,9 @@ export const doSignInWithEmailAndPassword = async (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
 }
 
-export const doSendPasswordResetEmail = async (email) => {
-    return sendPasswordResetEmail(auth, email);
-}
+// export const doSendPasswordResetEmail = async (email) => {
+//     return sendPasswordResetEmail(auth, email);
+// }
 
 export const doUpdatePassword = async (newPassword) => {
     updatePassword(auth.currentUser, newPassword);
